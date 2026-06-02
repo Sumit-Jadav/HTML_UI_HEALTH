@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patient Dashboard - MediConnect</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .gradient-primary {
+            background: linear-gradient(135deg, #5b3db3 0%, #a855d8 100%);
+        }
+    </style>
+</head>
+<body class="font-sans antialiased bg-gray-50">
+    <!-- Sidebar Navigation -->
+    <div class="flex h-screen bg-gray-100">
+        <div class="w-64 bg-white shadow-lg hidden md:block">
+            <div class="p-6 border-b border-gray-200">
+                <div class="flex items-center space-x-2">
+                    <div class="w-10 h-10 gradient-primary rounded-lg flex items-center justify-center text-white font-bold">M</div>
+                    <span class="text-xl font-bold text-gray-900">MediConnect</span>
+                </div>
+            </div>
+
+            <nav class="p-6 space-y-2">
+                <a href="#" class="flex items-center space-x-3 px-4 py-3 rounded-lg gradient-primary text-white">
+                    <i class="fas fa-home"></i>
+                    <span>Dashboard</span>
+                </a>
+                <a href="#" class="flex items-center space-x-3 px-4 py-3 rounded-lg text-gray-700 hover:bg-gray-100">
+                    <i class="fas fa-calendar"></i>
+                    <span>Appointments</span>
+                </a>
+                <a href="#" class="flex items-center space-x-3 px-4 py-3 rounded-lg text-gray-700 hover:bg-gray-100">
+                    <i class="fas fa-file-medical"></i>
+                    <span>Medical Records</span>
+                </a>
+                <a href="#" class="flex items-center space-x-3 px-4 py-3 rounded-lg text-gray-700 hover:bg-gray-100">
+                    <i class="fas fa-prescription-bottle"></i>
+                    <span>Prescriptions</span>
+                </a>
+                <a href="#" class="flex items-center space-x-3 px-4 py-3 rounded-lg text-gray-700 hover:bg-gray-100">
+                    <i class="fas fa-user"></i>
+                    <span>Profile</span>
+                </a>
+            </nav>
+
+            <div class="absolute bottom-0 w-64 p-6 border-t border-gray-200">
+                <button class="w-full text-left text-gray-700 hover:text-red-600">
+                    <i class="fas fa-sign-out-alt"></i> Logout
+                </button>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="flex-1 overflow-auto">
+            <!-- Header -->
+            <header class="bg-white border-b border-gray-200 p-6">
+                <div class="flex justify-between items-center">
+                    <h1 class="text-3xl font-bold text-gray-900">Patient Dashboard</h1>
+                    <div class="flex items-center space-x-4">
+                        <button class="text-gray-600 hover:text-gray-900">
+                            <i class="fas fa-bell text-xl"></i>
+                        </button>
+                        <img src="../public/doctor-avatar-1.png" alt="Profile" class="w-10 h-10 rounded-full object-cover">
+                    </div>
+                </div>
+            </header>
+
+            <!-- Dashboard Content -->
+            <div class="p-6">
+                <!-- Welcome Section -->
+                <div class="mb-8">
+                    <h2 class="text-2xl font-bold text-gray-900 mb-2">Welcome, John Doe</h2>
+                    <p class="text-gray-600">Here's your health dashboard overview</p>
+                </div>
+
+                <!-- Statistics Cards -->
+                <div class="grid md:grid-cols-4 gap-6 mb-8">
+                    <div class="bg-white rounded-lg shadow p-6">
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <p class="text-gray-600 text-sm">Total Appointments</p>
+                                <p class="text-3xl font-bold text-gray-900">12</p>
+                            </div>
+                            <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center text-blue-600 text-xl">
+                                <i class="fas fa-calendar"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-white rounded-lg shadow p-6">
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <p class="text-gray-600 text-sm">Medical Records</p>
+                                <p class="text-3xl font-bold text-gray-900">8</p>
+                            </div>
+                            <div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center text-green-600 text-xl">
+                                <i class="fas fa-file-medical"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-white rounded-lg shadow p-6">
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <p class="text-gray-600 text-sm">Prescriptions</p>
+                                <p class="text-3xl font-bold text-gray-900">5</p>
+                            </div>
+                            <div class="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center text-purple-600 text-xl">
+                                <i class="fas fa-prescription-bottle"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-white rounded-lg shadow p-6">
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <p class="text-gray-600 text-sm">Health Score</p>
+                                <p class="text-3xl font-bold text-gray-900">85%</p>
+                            </div>
+                            <div class="w-12 h-12 bg-yellow-100 rounded-lg flex items-center justify-center text-yellow-600 text-xl">
+                                <i class="fas fa-heart"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tab Navigation -->
+                <div class="mb-6">
+                    <div class="flex border-b border-gray-200">
+                        <button class="px-6 py-3 gradient-primary text-white font-medium border-b-2 border-purple-600">
+                            Upcoming Appointments
+                        </button>
+                        <button class="px-6 py-3 text-gray-700 hover:text-gray-900">
+                            Past Appointments
+                        </button>
+                        <button class="px-6 py-3 text-gray-700 hover:text-gray-900">
+                            Medical Records
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Appointments Table -->
+                <div class="bg-white rounded-lg shadow overflow-hidden">
+                    <table class="w-full">
+                        <thead class="bg-gray-50 border-b border-gray-200">
+                            <tr>
+                                <th class="px-6 py-3 text-left text-sm font-semibold text-gray-700">Doctor</th>
+                                <th class="px-6 py-3 text-left text-sm font-semibold text-gray-700">Specialty</th>
+                                <th class="px-6 py-3 text-left text-sm font-semibold text-gray-700">Date & Time</th>
+                                <th class="px-6 py-3 text-left text-sm font-semibold text-gray-700">Type</th>
+                                <th class="px-6 py-3 text-left text-sm font-semibold text-gray-700">Status</th>
+                                <th class="px-6 py-3 text-left text-sm font-semibold text-gray-700">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-gray-200">
+                            <tr>
+                                <td class="px-6 py-4">
+                                    <div class="flex items-center space-x-3">
+                                        <img src="../public/doctor-avatar-1.png" alt="" class="w-8 h-8 rounded-full object-cover">
+                                        <span class="font-medium text-gray-900">Dr. Sarah Johnson</span>
+                                    </div>
+                                </td>
+                                <td class="px-6 py-4 text-gray-700">Cardiologist</td>
+                                <td class="px-6 py-4 text-gray-700">Tomorrow, 10:00 AM</td>
+                                <td class="px-6 py-4">
+                                    <span class="px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-sm">Online</span>
+                                </td>
+                                <td class="px-6 py-4">
+                                    <span class="px-3 py-1 bg-green-100 text-green-700 rounded-full text-sm">Confirmed</span>
+                                </td>
+                                <td class="px-6 py-4">
+                                    <div class="flex space-x-3">
+                                        <button class="text-blue-600 hover:text-blue-900 text-sm font-medium">Reschedule</button>
+                                        <button class="text-red-600 hover:text-red-900 text-sm font-medium">Cancel</button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="px-6 py-4">
+                                    <div class="flex items-center space-x-3">
+                                        <img src="../public/doctor-avatar-2.png" alt="" class="w-8 h-8 rounded-full object-cover">
+                                        <span class="font-medium text-gray-900">Dr. Michael Chen</span>
+                                    </div>
+                                </td>
+                                <td class="px-6 py-4 text-gray-700">Orthopedic Surgeon</td>
+                                <td class="px-6 py-4 text-gray-700">June 10, 2026, 2:00 PM</td>
+                                <td class="px-6 py-4">
+                                    <span class="px-3 py-1 bg-purple-100 text-purple-700 rounded-full text-sm">Clinic</span>
+                                </td>
+                                <td class="px-6 py-4">
+                                    <span class="px-3 py-1 bg-yellow-100 text-yellow-700 rounded-full text-sm">Pending</span>
+                                </td>
+                                <td class="px-6 py-4">
+                                    <div class="flex space-x-3">
+                                        <button class="text-blue-600 hover:text-blue-900 text-sm font-medium">Reschedule</button>
+                                        <button class="text-red-600 hover:text-red-900 text-sm font-medium">Cancel</button>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Quick Actions -->
+                <div class="grid md:grid-cols-2 gap-6 mt-8">
+                    <div class="bg-white rounded-lg shadow p-6">
+                        <h3 class="text-lg font-bold text-gray-900 mb-4">Quick Actions</h3>
+                        <div class="space-y-2">
+                            <button class="w-full text-left px-4 py-2 hover:bg-gray-50 rounded-lg flex items-center space-x-3">
+                                <i class="fas fa-plus text-purple-600"></i>
+                                <span>Book New Appointment</span>
+                            </button>
+                            <button class="w-full text-left px-4 py-2 hover:bg-gray-50 rounded-lg flex items-center space-x-3">
+                                <i class="fas fa-download text-blue-600"></i>
+                                <span>Download Medical Records</span>
+                            </button>
+                            <button class="w-full text-left px-4 py-2 hover:bg-gray-50 rounded-lg flex items-center space-x-3">
+                                <i class="fas fa-message text-green-600"></i>
+                                <span>Message Doctor</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="bg-white rounded-lg shadow p-6">
+                        <h3 class="text-lg font-bold text-gray-900 mb-4">Recent Prescriptions</h3>
+                        <div class="space-y-3">
+                            <div class="p-3 border border-gray-200 rounded-lg">
+                                <p class="font-medium text-gray-900">Aspirin 500mg</p>
+                                <p class="text-sm text-gray-600">2 tablets daily • By Dr. Johnson</p>
+                            </div>
+                            <div class="p-3 border border-gray-200 rounded-lg">
+                                <p class="font-medium text-gray-900">Vitamin D</p>
+                                <p class="text-sm text-gray-600">1 tablet daily • By Dr. Chen</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

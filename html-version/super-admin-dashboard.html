@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Super Admin Dashboard - MediConnect</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .gradient-primary {
+            background: linear-gradient(135deg, #5b3db3 0%, #a855d8 100%);
+        }
+    </style>
+</head>
+<body class="font-sans antialiased bg-gray-50">
+    <div class="flex h-screen bg-gray-100">
+        <!-- Sidebar -->
+        <div class="w-64 bg-white shadow-lg hidden md:block">
+            <div class="p-6 border-b border-gray-200">
+                <div class="flex items-center space-x-2">
+                    <div class="w-10 h-10 gradient-primary rounded-lg flex items-center justify-center text-white font-bold">M</div>
+                    <span class="text-xl font-bold text-gray-900">MediConnect</span>
+                </div>
+            </div>
+
+            <nav class="p-6 space-y-2">
+                <a href="#" class="flex items-center space-x-3 px-4 py-3 rounded-lg gradient-primary text-white">
+                    <i class="fas fa-home"></i>
+                    <span>Dashboard</span>
+                </a>
+                <a href="#" class="flex items-center space-x-3 px-4 py-3 rounded-lg text-gray-700 hover:bg-gray-100">
+                    <i class="fas fa-hospital"></i>
+                    <span>Hospitals</span>
+                </a>
+                <a href="#" class="flex items-center space-x-3 px-4 py-3 rounded-lg text-gray-700 hover:bg-gray-100">
+                    <i class="fas fa-users"></i>
+                    <span>Users</span>
+                </a>
+                <a href="#" class="flex items-center space-x-3 px-4 py-3 rounded-lg text-gray-700 hover:bg-gray-100">
+                    <i class="fas fa-chart-line"></i>
+                    <span>Analytics</span>
+                </a>
+                <a href="#" class="flex items-center space-x-3 px-4 py-3 rounded-lg text-gray-700 hover:bg-gray-100">
+                    <i class="fas fa-cog"></i>
+                    <span>Settings</span>
+                </a>
+            </nav>
+
+            <div class="absolute bottom-0 w-64 p-6 border-t border-gray-200">
+                <button class="w-full text-left text-gray-700 hover:text-red-600">
+                    <i class="fas fa-sign-out-alt"></i> Logout
+                </button>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="flex-1 overflow-auto">
+            <!-- Header -->
+            <header class="bg-white border-b border-gray-200 p-6">
+                <div class="flex justify-between items-center">
+                    <h1 class="text-3xl font-bold text-gray-900">Super Admin Dashboard</h1>
+                    <button class="text-gray-600 hover:text-gray-900">
+                        <i class="fas fa-bell text-xl"></i>
+                    </button>
+                </div>
+            </header>
+
+            <!-- Content -->
+            <div class="p-6">
+                <h2 class="text-2xl font-bold text-gray-900 mb-8">Platform Overview</h2>
+
+                <!-- KPIs -->
+                <div class="grid md:grid-cols-4 gap-6 mb-8">
+                    <div class="bg-white rounded-lg shadow p-6">
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <p class="text-gray-600 text-sm">Total Hospitals</p>
+                                <p class="text-3xl font-bold text-gray-900">48</p>
+                            </div>
+                            <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center text-blue-600 text-xl">
+                                <i class="fas fa-hospital"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-white rounded-lg shadow p-6">
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <p class="text-gray-600 text-sm">Platform Users</p>
+                                <p class="text-3xl font-bold text-gray-900">12.5K</p>
+                            </div>
+                            <div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center text-green-600 text-xl">
+                                <i class="fas fa-users"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-white rounded-lg shadow p-6">
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <p class="text-gray-600 text-sm">Monthly Revenue</p>
+                                <p class="text-3xl font-bold text-gray-900">₹2.3Cr</p>
+                            </div>
+                            <div class="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center text-purple-600 text-xl">
+                                <i class="fas fa-chart-bar"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-white rounded-lg shadow p-6">
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <p class="text-gray-600 text-sm">Platform Uptime</p>
+                                <p class="text-3xl font-bold text-gray-900">99.99%</p>
+                            </div>
+                            <div class="w-12 h-12 bg-yellow-100 rounded-lg flex items-center justify-center text-yellow-600 text-xl">
+                                <i class="fas fa-server"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Hospital Management -->
+                <div class="grid md:grid-cols-2 gap-6 mb-6">
+                    <div class="bg-white rounded-lg shadow p-6">
+                        <h3 class="text-lg font-bold text-gray-900 mb-4">Top Performing Hospitals</h3>
+                        <table class="w-full text-sm">
+                            <thead class="border-b border-gray-200">
+                                <tr>
+                                    <th class="text-left py-2 font-semibold text-gray-700">Hospital</th>
+                                    <th class="text-left py-2 font-semibold text-gray-700">Appointments</th>
+                                    <th class="text-left py-2 font-semibold text-gray-700">Rating</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-gray-200">
+                                <tr>
+                                    <td class="py-2">Apollo Hospital</td>
+                                    <td class="py-2">2,341</td>
+                                    <td class="py-2">4.8</td>
+                                </tr>
+                                <tr>
+                                    <td class="py-2">Max Healthcare</td>
+                                    <td class="py-2">1,892</td>
+                                    <td class="py-2">4.7</td>
+                                </tr>
+                                <tr>
+                                    <td class="py-2">Fortis Hospital</td>
+                                    <td class="py-2">1,654</td>
+                                    <td class="py-2">4.6</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="bg-white rounded-lg shadow p-6">
+                        <h3 class="text-lg font-bold text-gray-900 mb-4">Platform Metrics</h3>
+                        <div class="space-y-4">
+                            <div>
+                                <div class="flex justify-between items-center mb-1">
+                                    <span class="text-sm text-gray-700">Doctor Activation</span>
+                                    <span class="text-sm font-medium text-gray-900">87%</span>
+                                </div>
+                                <div class="w-full h-2 bg-gray-200 rounded-full overflow-hidden">
+                                    <div class="h-full bg-green-500 w-[87%]"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between items-center mb-1">
+                                    <span class="text-sm text-gray-700">Patient Retention</span>
+                                    <span class="text-sm font-medium text-gray-900">72%</span>
+                                </div>
+                                <div class="w-full h-2 bg-gray-200 rounded-full overflow-hidden">
+                                    <div class="h-full bg-blue-500 w-[72%]"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between items-center mb-1">
+                                    <span class="text-sm text-gray-700">App Adoption</span>
+                                    <span class="text-sm font-medium text-gray-900">64%</span>
+                                </div>
+                                <div class="w-full h-2 bg-gray-200 rounded-full overflow-hidden">
+                                    <div class="h-full bg-purple-500 w-[64%]"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- User Management -->
+                <div class="bg-white rounded-lg shadow p-6">
+                    <h3 class="text-lg font-bold text-gray-900 mb-4">User Distribution</h3>
+                    <table class="w-full">
+                        <thead class="bg-gray-50 border-b border-gray-200">
+                            <tr>
+                                <th class="px-6 py-3 text-left text-sm font-semibold text-gray-700">Role</th>
+                                <th class="px-6 py-3 text-left text-sm font-semibold text-gray-700">Count</th>
+                                <th class="px-6 py-3 text-left text-sm font-semibold text-gray-700">Active</th>
+                                <th class="px-6 py-3 text-left text-sm font-semibold text-gray-700">Inactive</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-gray-200">
+                            <tr>
+                                <td class="px-6 py-4 font-medium text-gray-900">Patients</td>
+                                <td class="px-6 py-4 text-gray-700">8,234</td>
+                                <td class="px-6 py-4 text-gray-700">7,123</td>
+                                <td class="px-6 py-4 text-gray-700">1,111</td>
+                            </tr>
+                            <tr>
+                                <td class="px-6 py-4 font-medium text-gray-900">Doctors</td>
+                                <td class="px-6 py-4 text-gray-700">1,234</td>
+                                <td class="px-6 py-4 text-gray-700">1,089</td>
+                                <td class="px-6 py-4 text-gray-700">145</td>
+                            </tr>
+                            <tr>
+                                <td class="px-6 py-4 font-medium text-gray-900">Receptionists</td>
+                                <td class="px-6 py-4 text-gray-700">456</td>
+                                <td class="px-6 py-4 text-gray-700">412</td>
+                                <td class="px-6 py-4 text-gray-700">44</td>
+                            </tr>
+                            <tr>
+                                <td class="px-6 py-4 font-medium text-gray-900">Admins</td>
+                                <td class="px-6 py-4 text-gray-700">89</td>
+                                <td class="px-6 py-4 text-gray-700">85</td>
+                                <td class="px-6 py-4 text-gray-700">4</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

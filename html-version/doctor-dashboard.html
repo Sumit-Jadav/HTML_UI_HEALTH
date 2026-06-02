@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doctor Dashboard - MediConnect</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .gradient-primary {
+            background: linear-gradient(135deg, #5b3db3 0%, #a855d8 100%);
+        }
+    </style>
+</head>
+<body class="font-sans antialiased bg-gray-50">
+    <div class="flex h-screen bg-gray-100">
+        <!-- Sidebar -->
+        <div class="w-64 bg-white shadow-lg hidden md:block">
+            <div class="p-6 border-b border-gray-200">
+                <div class="flex items-center space-x-2">
+                    <div class="w-10 h-10 gradient-primary rounded-lg flex items-center justify-center text-white font-bold">M</div>
+                    <span class="text-xl font-bold text-gray-900">MediConnect</span>
+                </div>
+            </div>
+
+            <nav class="p-6 space-y-2">
+                <a href="#" class="flex items-center space-x-3 px-4 py-3 rounded-lg gradient-primary text-white">
+                    <i class="fas fa-home"></i>
+                    <span>Dashboard</span>
+                </a>
+                <a href="#" class="flex items-center space-x-3 px-4 py-3 rounded-lg text-gray-700 hover:bg-gray-100">
+                    <i class="fas fa-calendar"></i>
+                    <span>Schedule</span>
+                </a>
+                <a href="#" class="flex items-center space-x-3 px-4 py-3 rounded-lg text-gray-700 hover:bg-gray-100">
+                    <i class="fas fa-users"></i>
+                    <span>Patients</span>
+                </a>
+                <a href="#" class="flex items-center space-x-3 px-4 py-3 rounded-lg text-gray-700 hover:bg-gray-100">
+                    <i class="fas fa-clock"></i>
+                    <span>Availability</span>
+                </a>
+                <a href="#" class="flex items-center space-x-3 px-4 py-3 rounded-lg text-gray-700 hover:bg-gray-100">
+                    <i class="fas fa-user"></i>
+                    <span>Profile</span>
+                </a>
+            </nav>
+
+            <div class="absolute bottom-0 w-64 p-6 border-t border-gray-200">
+                <button class="w-full text-left text-gray-700 hover:text-red-600">
+                    <i class="fas fa-sign-out-alt"></i> Logout
+                </button>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="flex-1 overflow-auto">
+            <!-- Header -->
+            <header class="bg-white border-b border-gray-200 p-6">
+                <div class="flex justify-between items-center">
+                    <h1 class="text-3xl font-bold text-gray-900">Doctor Dashboard</h1>
+                    <div class="flex items-center space-x-4">
+                        <button class="text-gray-600 hover:text-gray-900">
+                            <i class="fas fa-bell text-xl"></i>
+                        </button>
+                        <img src="../public/doctor-avatar-2.png" alt="Profile" class="w-10 h-10 rounded-full object-cover">
+                    </div>
+                </div>
+            </header>
+
+            <!-- Content -->
+            <div class="p-6">
+                <div class="mb-8">
+                    <h2 class="text-2xl font-bold text-gray-900 mb-2">Dr. Michael Chen</h2>
+                    <p class="text-gray-600">Orthopedic Surgeon</p>
+                </div>
+
+                <!-- Statistics -->
+                <div class="grid md:grid-cols-4 gap-6 mb-8">
+                    <div class="bg-white rounded-lg shadow p-6">
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <p class="text-gray-600 text-sm">Today's Appointments</p>
+                                <p class="text-3xl font-bold text-gray-900">5</p>
+                            </div>
+                            <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center text-blue-600 text-xl">
+                                <i class="fas fa-calendar-check"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-white rounded-lg shadow p-6">
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <p class="text-gray-600 text-sm">Total Patients</p>
+                                <p class="text-3xl font-bold text-gray-900">142</p>
+                            </div>
+                            <div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center text-green-600 text-xl">
+                                <i class="fas fa-users"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-white rounded-lg shadow p-6">
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <p class="text-gray-600 text-sm">Consultation Hours</p>
+                                <p class="text-3xl font-bold text-gray-900">8h</p>
+                            </div>
+                            <div class="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center text-purple-600 text-xl">
+                                <i class="fas fa-hourglass"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-white rounded-lg shadow p-6">
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <p class="text-gray-600 text-sm">Rating</p>
+                                <p class="text-3xl font-bold text-gray-900">4.9</p>
+                            </div>
+                            <div class="w-12 h-12 bg-yellow-100 rounded-lg flex items-center justify-center text-yellow-600 text-xl">
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="grid md:grid-cols-3 gap-6">
+                    <!-- Today's Schedule -->
+                    <div class="md:col-span-2 bg-white rounded-lg shadow p-6">
+                        <h3 class="text-lg font-bold text-gray-900 mb-4">Today's Schedule</h3>
+                        <div class="space-y-3">
+                            <div class="flex items-center justify-between p-4 border border-gray-200 rounded-lg hover:bg-gray-50">
+                                <div>
+                                    <p class="font-medium text-gray-900">John Smith</p>
+                                    <p class="text-sm text-gray-600">9:00 AM - Consultation</p>
+                                </div>
+                                <button class="text-purple-600 hover:text-purple-900 font-medium text-sm">Start Call</button>
+                            </div>
+
+                            <div class="flex items-center justify-between p-4 border border-gray-200 rounded-lg hover:bg-gray-50">
+                                <div>
+                                    <p class="font-medium text-gray-900">Mary Johnson</p>
+                                    <p class="text-sm text-gray-600">10:30 AM - Follow-up</p>
+                                </div>
+                                <button class="text-purple-600 hover:text-purple-900 font-medium text-sm">Start Call</button>
+                            </div>
+
+                            <div class="flex items-center justify-between p-4 border border-gray-200 rounded-lg hover:bg-gray-50">
+                                <div>
+                                    <p class="font-medium text-gray-900">Robert Brown</p>
+                                    <p class="text-sm text-gray-600">2:00 PM - Clinic Visit</p>
+                                </div>
+                                <span class="px-3 py-1 bg-purple-100 text-purple-700 rounded-full text-sm">Pending</span>
+                            </div>
+
+                            <div class="flex items-center justify-between p-4 border border-gray-200 rounded-lg hover:bg-gray-50">
+                                <div>
+                                    <p class="font-medium text-gray-900">Sarah Davis</p>
+                                    <p class="text-sm text-gray-600">3:30 PM - Consultation</p>
+                                </div>
+                                <button class="text-purple-600 hover:text-purple-900 font-medium text-sm">Start Call</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Availability Status -->
+                    <div class="bg-white rounded-lg shadow p-6">
+                        <h3 class="text-lg font-bold text-gray-900 mb-4">Availability</h3>
+                        <div class="space-y-3">
+                            <div class="flex items-center justify-between p-3 border border-gray-200 rounded-lg">
+                                <span class="text-gray-700">Monday</span>
+                                <span class="px-2 py-1 bg-green-100 text-green-700 rounded text-sm">Online</span>
+                            </div>
+                            <div class="flex items-center justify-between p-3 border border-gray-200 rounded-lg">
+                                <span class="text-gray-700">Tuesday</span>
+                                <span class="px-2 py-1 bg-green-100 text-green-700 rounded text-sm">Online</span>
+                            </div>
+                            <div class="flex items-center justify-between p-3 border border-gray-200 rounded-lg">
+                                <span class="text-gray-700">Wednesday</span>
+                                <span class="px-2 py-1 bg-blue-100 text-blue-700 rounded text-sm">Clinic</span>
+                            </div>
+                            <div class="flex items-center justify-between p-3 border border-gray-200 rounded-lg">
+                                <span class="text-gray-700">Thursday</span>
+                                <span class="px-2 py-1 bg-green-100 text-green-700 rounded text-sm">Online</span>
+                            </div>
+                            <div class="flex items-center justify-between p-3 border border-gray-200 rounded-lg">
+                                <span class="text-gray-700">Friday</span>
+                                <span class="px-2 py-1 bg-gray-100 text-gray-700 rounded text-sm">Off</span>
+                            </div>
+                        </div>
+                        <button class="w-full mt-4 gradient-primary text-white py-2 rounded-lg font-medium hover:shadow-lg transition">Edit Availability</button>
+                    </div>
+                </div>
+
+                <!-- Patients List -->
+                <div class="bg-white rounded-lg shadow p-6 mt-6">
+                    <h3 class="text-lg font-bold text-gray-900 mb-4">Recent Patients</h3>
+                    <table class="w-full">
+                        <thead class="bg-gray-50 border-b border-gray-200">
+                            <tr>
+                                <th class="px-6 py-3 text-left text-sm font-semibold text-gray-700">Patient</th>
+                                <th class="px-6 py-3 text-left text-sm font-semibold text-gray-700">Last Visit</th>
+                                <th class="px-6 py-3 text-left text-sm font-semibold text-gray-700">Condition</th>
+                                <th class="px-6 py-3 text-left text-sm font-semibold text-gray-700">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-gray-200">
+                            <tr>
+                                <td class="px-6 py-4 font-medium text-gray-900">John Smith</td>
+                                <td class="px-6 py-4 text-gray-700">Today</td>
+                                <td class="px-6 py-4 text-gray-700">Knee Pain</td>
+                                <td class="px-6 py-4">
+                                    <button class="text-purple-600 hover:text-purple-900 text-sm font-medium">View Notes</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="px-6 py-4 font-medium text-gray-900">Mary Johnson</td>
+                                <td class="px-6 py-4 text-gray-700">2 days ago</td>
+                                <td class="px-6 py-4 text-gray-700">Back Injury</td>
+                                <td class="px-6 py-4">
+                                    <button class="text-purple-600 hover:text-purple-900 text-sm font-medium">View Notes</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

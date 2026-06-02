@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Find and book appointments with top doctors">
+    <title>Find Doctors - MediConnect</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .gradient-primary {
+            background: linear-gradient(135deg, #5b3db3 0%, #a855d8 100%);
+        }
+    </style>
+</head>
+<body class="font-sans antialiased bg-white text-gray-900">
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-md border-b border-gray-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
+            <a href="index.html" class="flex items-center space-x-2">
+                <div class="w-10 h-10 gradient-primary rounded-lg flex items-center justify-center text-white font-bold">M</div>
+                <span class="text-xl font-bold">MediConnect</span>
+            </a>
+            <div class="flex space-x-4">
+                <a href="login.html" class="text-gray-900 hover:text-purple-600 transition">Login</a>
+                <a href="signup.html" class="bg-purple-600 text-white px-6 py-2 rounded-lg font-medium hover:shadow-lg transition">Sign Up</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="pt-32 pb-12 px-4 sm:px-6 lg:px-8 bg-gradient-to-r from-purple-50 to-pink-50">
+        <div class="max-w-7xl mx-auto">
+            <h1 class="text-4xl font-bold text-gray-900 mb-4">Find & Book Doctors</h1>
+            <p class="text-gray-600 text-lg">Browse our extensive network of qualified medical professionals</p>
+        </div>
+    </section>
+
+    <!-- Filters Section -->
+    <section class="py-12 px-4 sm:px-6 lg:px-8 bg-white border-b border-gray-200">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid md:grid-cols-4 gap-6">
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2">Search</label>
+                    <input type="text" placeholder="Doctor name or specialty" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-600">
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2">Specialty</label>
+                    <select class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-600">
+                        <option>All Specialties</option>
+                        <option>Cardiology</option>
+                        <option>Orthopedics</option>
+                        <option>Dermatology</option>
+                        <option>Neurology</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2">Rating</label>
+                    <select class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-600">
+                        <option>All Ratings</option>
+                        <option>4.5+ Stars</option>
+                        <option>4.0+ Stars</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2">Fee Range</label>
+                    <select class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-600">
+                        <option>All Fees</option>
+                        <option>Below ₹500</option>
+                        <option>₹500-₹1000</option>
+                        <option>Above ₹1000</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Doctor Listings -->
+    <section class="py-16 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Doctor Card Template -->
+                <div class="rounded-xl border border-gray-200 bg-white overflow-hidden hover:shadow-xl transition">
+                    <div class="relative h-48 bg-gradient-to-br from-purple-100 to-pink-100">
+                        <img src="../public/doctor-avatar-1.png" alt="Doctor" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-lg font-bold text-gray-900 mb-1">Dr. Sarah Johnson</h3>
+                        <p class="text-sm text-pink-600 font-medium mb-1">Cardiologist</p>
+                        <p class="text-xs text-gray-600 mb-4">12 years experience</p>
+                        
+                        <div class="flex items-center gap-4 mb-4">
+                            <div class="flex items-center space-x-1">
+                                <i class="fas fa-star text-yellow-400"></i>
+                                <span class="text-sm font-medium">4.8/5</span>
+                            </div>
+                            <span class="text-xs text-green-600 bg-green-50 px-2 py-1 rounded">Available Today</span>
+                        </div>
+
+                        <div class="bg-gray-50 p-3 rounded-lg mb-4">
+                            <p class="text-xs text-gray-600 mb-1">Consultation Fee</p>
+                            <p class="text-2xl font-bold text-gray-900">₹500</p>
+                        </div>
+
+                        <button class="w-full gradient-primary text-white py-2 rounded-lg font-medium hover:shadow-lg transition">Book Now</button>
+                    </div>
+                </div>
+
+                <!-- Repeat for more doctors -->
+                <div class="rounded-xl border border-gray-200 bg-white overflow-hidden hover:shadow-xl transition">
+                    <div class="relative h-48 bg-gradient-to-br from-purple-100 to-pink-100">
+                        <img src="../public/doctor-avatar-2.png" alt="Doctor" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-lg font-bold text-gray-900 mb-1">Dr. Michael Chen</h3>
+                        <p class="text-sm text-pink-600 font-medium mb-1">Orthopedic Surgeon</p>
+                        <p class="text-xs text-gray-600 mb-4">10 years experience</p>
+                        
+                        <div class="flex items-center gap-4 mb-4">
+                            <div class="flex items-center space-x-1">
+                                <i class="fas fa-star text-yellow-400"></i>
+                                <span class="text-sm font-medium">4.9/5</span>
+                            </div>
+                            <span class="text-xs text-blue-600 bg-blue-50 px-2 py-1 rounded">Tomorrow</span>
+                        </div>
+
+                        <div class="bg-gray-50 p-3 rounded-lg mb-4">
+                            <p class="text-xs text-gray-600 mb-1">Consultation Fee</p>
+                            <p class="text-2xl font-bold text-gray-900">₹600</p>
+                        </div>
+
+                        <button class="w-full gradient-primary text-white py-2 rounded-lg font-medium hover:shadow-lg transition">Book Now</button>
+                    </div>
+                </div>
+
+                <div class="rounded-xl border border-gray-200 bg-white overflow-hidden hover:shadow-xl transition">
+                    <div class="relative h-48 bg-gradient-to-br from-purple-100 to-pink-100">
+                        <img src="../public/doctor-avatar-1.png" alt="Doctor" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-lg font-bold text-gray-900 mb-1">Dr. Emma Wilson</h3>
+                        <p class="text-sm text-pink-600 font-medium mb-1">General Physician</p>
+                        <p class="text-xs text-gray-600 mb-4">8 years experience</p>
+                        
+                        <div class="flex items-center gap-4 mb-4">
+                            <div class="flex items-center space-x-1">
+                                <i class="fas fa-star text-yellow-400"></i>
+                                <span class="text-sm font-medium">4.7/5</span>
+                            </div>
+                            <span class="text-xs text-green-600 bg-green-50 px-2 py-1 rounded">Available Today</span>
+                        </div>
+
+                        <div class="bg-gray-50 p-3 rounded-lg mb-4">
+                            <p class="text-xs text-gray-600 mb-1">Consultation Fee</p>
+                            <p class="text-2xl font-bold text-gray-900">₹400</p>
+                        </div>
+
+                        <button class="w-full gradient-primary text-white py-2 rounded-lg font-medium hover:shadow-lg transition">Book Now</button>
+                    </div>
+                </div>
+
+                <div class="rounded-xl border border-gray-200 bg-white overflow-hidden hover:shadow-xl transition">
+                    <div class="relative h-48 bg-gradient-to-br from-purple-100 to-pink-100">
+                        <img src="../public/doctor-avatar-2.png" alt="Doctor" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-lg font-bold text-gray-900 mb-1">Dr. Rajesh Kumar</h3>
+                        <p class="text-sm text-pink-600 font-medium mb-1">Neurologist</p>
+                        <p class="text-xs text-gray-600 mb-4">15 years experience</p>
+                        
+                        <div class="flex items-center gap-4 mb-4">
+                            <div class="flex items-center space-x-1">
+                                <i class="fas fa-star text-yellow-400"></i>
+                                <span class="text-sm font-medium">4.9/5</span>
+                            </div>
+                            <span class="text-xs bg-gray-200 text-gray-600 px-2 py-1 rounded">Day After</span>
+                        </div>
+
+                        <div class="bg-gray-50 p-3 rounded-lg mb-4">
+                            <p class="text-xs text-gray-600 mb-1">Consultation Fee</p>
+                            <p class="text-2xl font-bold text-gray-900">₹700</p>
+                        </div>
+
+                        <button class="w-full gradient-primary text-white py-2 rounded-lg font-medium hover:shadow-lg transition">Book Now</button>
+                    </div>
+                </div>
+
+                <!-- Add more doctor cards as needed -->
+            </div>
+
+            <!-- Pagination -->
+            <div class="flex justify-center items-center gap-2 mt-12">
+                <button class="px-4 py-2 border border-gray-300 rounded-lg hover:bg-gray-50">Previous</button>
+                <button class="px-4 py-2 bg-purple-600 text-white rounded-lg">1</button>
+                <button class="px-4 py-2 border border-gray-300 rounded-lg hover:bg-gray-50">2</button>
+                <button class="px-4 py-2 border border-gray-300 rounded-lg hover:bg-gray-50">3</button>
+                <button class="px-4 py-2 border border-gray-300 rounded-lg hover:bg-gray-50">Next</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12 px-4 sm:px-6 lg:px-8 mt-12">
+        <div class="max-w-7xl mx-auto text-center">
+            <p class="text-gray-400">&copy; 2026 MediConnect. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>

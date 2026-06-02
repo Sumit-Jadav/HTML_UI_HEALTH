@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Appointment - MediConnect</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .gradient-primary {
+            background: linear-gradient(135deg, #5b3db3 0%, #a855d8 100%);
+        }
+    </style>
+</head>
+<body class="font-sans antialiased bg-gray-50">
+    <!-- Navigation -->
+    <nav class="bg-white border-b border-gray-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
+            <a href="index.html" class="flex items-center space-x-2">
+                <div class="w-10 h-10 gradient-primary rounded-lg flex items-center justify-center text-white font-bold">M</div>
+                <span class="text-xl font-bold text-gray-900">MediConnect</span>
+            </a>
+        </div>
+    </nav>
+
+    <!-- Booking Container -->
+    <section class="py-12 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-4xl mx-auto">
+            <!-- Header -->
+            <div class="mb-12">
+                <h1 class="text-4xl font-bold text-gray-900 mb-2">Book an Appointment</h1>
+                <p class="text-gray-600">Follow the steps below to schedule your consultation</p>
+            </div>
+
+            <!-- Progress Bar -->
+            <div class="mb-8">
+                <div class="flex justify-between items-center mb-4">
+                    <div class="flex-1">
+                        <div class="flex items-center">
+                            <div class="gradient-primary w-10 h-10 rounded-full flex items-center justify-center text-white font-bold">1</div>
+                            <div class="flex-1 h-1 gradient-primary mx-2"></div>
+                        </div>
+                        <p class="text-sm font-medium text-gray-900 mt-2">Select Doctor</p>
+                    </div>
+                    <div class="flex-1">
+                        <div class="flex items-center">
+                            <div class="bg-gray-300 w-10 h-10 rounded-full flex items-center justify-center text-gray-600 font-bold">2</div>
+                            <div class="flex-1 h-1 bg-gray-300 mx-2"></div>
+                        </div>
+                        <p class="text-sm font-medium text-gray-600 mt-2">Choose Date & Time</p>
+                    </div>
+                    <div class="flex-1">
+                        <div class="flex items-center">
+                            <div class="bg-gray-300 w-10 h-10 rounded-full flex items-center justify-center text-gray-600 font-bold">3</div>
+                            <div class="flex-1 h-1 bg-gray-300 mx-2"></div>
+                        </div>
+                        <p class="text-sm font-medium text-gray-600 mt-2">Appointment Type</p>
+                    </div>
+                    <div>
+                        <div class="bg-gray-300 w-10 h-10 rounded-full flex items-center justify-center text-gray-600 font-bold">4</div>
+                        <p class="text-sm font-medium text-gray-600 mt-2">Confirm</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 1: Select Doctor -->
+            <div id="step1" class="bg-white rounded-xl shadow-lg p-8">
+                <h2 class="text-2xl font-bold text-gray-900 mb-6">Step 1: Select a Doctor</h2>
+                
+                <div class="space-y-4">
+                    <!-- Doctor Option -->
+                    <label class="flex items-center p-4 border-2 border-gray-200 rounded-lg cursor-pointer hover:border-purple-600 transition">
+                        <input type="radio" name="doctor" class="w-4 h-4 text-purple-600">
+                        <img src="../public/doctor-avatar-1.png" alt="Doctor" class="w-12 h-12 rounded-full ml-4 object-cover">
+                        <div class="ml-4 flex-1">
+                            <p class="font-semibold text-gray-900">Dr. Sarah Johnson</p>
+                            <p class="text-sm text-gray-600">Cardiologist • 4.8★ • 12 years</p>
+                        </div>
+                        <p class="font-bold text-purple-600">₹500</p>
+                    </label>
+
+                    <label class="flex items-center p-4 border-2 border-gray-200 rounded-lg cursor-pointer hover:border-purple-600 transition">
+                        <input type="radio" name="doctor" class="w-4 h-4 text-purple-600">
+                        <img src="../public/doctor-avatar-2.png" alt="Doctor" class="w-12 h-12 rounded-full ml-4 object-cover">
+                        <div class="ml-4 flex-1">
+                            <p class="font-semibold text-gray-900">Dr. Michael Chen</p>
+                            <p class="text-sm text-gray-600">Orthopedic Surgeon • 4.9★ • 10 years</p>
+                        </div>
+                        <p class="font-bold text-purple-600">₹600</p>
+                    </label>
+
+                    <label class="flex items-center p-4 border-2 border-gray-200 rounded-lg cursor-pointer hover:border-purple-600 transition">
+                        <input type="radio" name="doctor" class="w-4 h-4 text-purple-600">
+                        <img src="../public/doctor-avatar-1.png" alt="Doctor" class="w-12 h-12 rounded-full ml-4 object-cover">
+                        <div class="ml-4 flex-1">
+                            <p class="font-semibold text-gray-900">Dr. Emma Wilson</p>
+                            <p class="text-sm text-gray-600">General Physician • 4.7★ • 8 years</p>
+                        </div>
+                        <p class="font-bold text-purple-600">₹400</p>
+                    </label>
+                </div>
+
+                <button type="button" onclick="goToStep(2)" class="w-full gradient-primary text-white py-3 rounded-lg font-semibold mt-6 hover:shadow-lg transition">Continue</button>
+            </div>
+
+            <!-- Step 2: Date & Time -->
+            <div id="step2" class="bg-white rounded-xl shadow-lg p-8 hidden">
+                <h2 class="text-2xl font-bold text-gray-900 mb-6">Step 2: Choose Date & Time</h2>
+                
+                <div class="grid md:grid-cols-2 gap-8">
+                    <!-- Calendar -->
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-4">Select Date</label>
+                        <input type="date" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-600">
+                    </div>
+
+                    <!-- Time Slots -->
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-4">Select Time</label>
+                        <div class="grid grid-cols-3 gap-2">
+                            <button class="py-2 px-3 border border-gray-300 rounded-lg hover:border-purple-600 hover:bg-purple-50">9:00 AM</button>
+                            <button class="py-2 px-3 border border-purple-600 bg-purple-50 rounded-lg">10:00 AM</button>
+                            <button class="py-2 px-3 border border-gray-300 rounded-lg hover:border-purple-600 hover:bg-purple-50">11:00 AM</button>
+                            <button class="py-2 px-3 border border-gray-300 rounded-lg hover:border-purple-600 hover:bg-purple-50">2:00 PM</button>
+                            <button class="py-2 px-3 border border-gray-300 rounded-lg hover:border-purple-600 hover:bg-purple-50">3:00 PM</button>
+                            <button class="py-2 px-3 border border-gray-300 rounded-lg hover:border-purple-600 hover:bg-purple-50">4:00 PM</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flex gap-3 mt-6">
+                    <button type="button" onclick="goToStep(1)" class="flex-1 border border-gray-300 text-gray-700 py-3 rounded-lg font-semibold hover:bg-gray-50">Back</button>
+                    <button type="button" onclick="goToStep(3)" class="flex-1 gradient-primary text-white py-3 rounded-lg font-semibold hover:shadow-lg transition">Continue</button>
+                </div>
+            </div>
+
+            <!-- Step 3: Appointment Type -->
+            <div id="step3" class="bg-white rounded-xl shadow-lg p-8 hidden">
+                <h2 class="text-2xl font-bold text-gray-900 mb-6">Step 3: Appointment Type</h2>
+                
+                <div class="space-y-4">
+                    <label class="flex items-center p-4 border-2 border-purple-600 rounded-lg cursor-pointer bg-purple-50">
+                        <input type="radio" name="type" checked class="w-4 h-4 text-purple-600">
+                        <div class="ml-4">
+                            <p class="font-semibold text-gray-900">Online Consultation</p>
+                            <p class="text-sm text-gray-600">Video call with the doctor</p>
+                        </div>
+                    </label>
+
+                    <label class="flex items-center p-4 border-2 border-gray-200 rounded-lg cursor-pointer hover:border-purple-600 transition">
+                        <input type="radio" name="type" class="w-4 h-4 text-purple-600">
+                        <div class="ml-4">
+                            <p class="font-semibold text-gray-900">Clinic Visit</p>
+                            <p class="text-sm text-gray-600">Visit the clinic in person</p>
+                        </div>
+                    </label>
+                </div>
+
+                <!-- Additional Notes -->
+                <div class="mt-6">
+                    <label class="block text-sm font-medium text-gray-700 mb-2">Symptoms/Notes (Optional)</label>
+                    <textarea placeholder="Describe your symptoms or concerns..." class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-600 resize-none" rows="4"></textarea>
+                </div>
+
+                <div class="flex gap-3 mt-6">
+                    <button type="button" onclick="goToStep(2)" class="flex-1 border border-gray-300 text-gray-700 py-3 rounded-lg font-semibold hover:bg-gray-50">Back</button>
+                    <button type="button" onclick="goToStep(4)" class="flex-1 gradient-primary text-white py-3 rounded-lg font-semibold hover:shadow-lg transition">Review</button>
+                </div>
+            </div>
+
+            <!-- Step 4: Confirmation -->
+            <div id="step4" class="bg-white rounded-xl shadow-lg p-8 hidden">
+                <h2 class="text-2xl font-bold text-gray-900 mb-6">Confirm Your Appointment</h2>
+                
+                <div class="space-y-4 mb-6">
+                    <div class="flex justify-between items-center py-3 border-b border-gray-200">
+                        <span class="text-gray-600">Doctor</span>
+                        <span class="font-semibold text-gray-900">Dr. Sarah Johnson</span>
+                    </div>
+                    <div class="flex justify-between items-center py-3 border-b border-gray-200">
+                        <span class="text-gray-600">Date & Time</span>
+                        <span class="font-semibold text-gray-900">Tomorrow, 10:00 AM</span>
+                    </div>
+                    <div class="flex justify-between items-center py-3 border-b border-gray-200">
+                        <span class="text-gray-600">Type</span>
+                        <span class="font-semibold text-gray-900">Online Consultation</span>
+                    </div>
+                    <div class="flex justify-between items-center py-3 border-b border-gray-200">
+                        <span class="text-gray-600">Consultation Fee</span>
+                        <span class="font-semibold text-gray-900 text-lg text-purple-600">₹500</span>
+                    </div>
+                </div>
+
+                <div class="flex gap-3">
+                    <button type="button" onclick="goToStep(3)" class="flex-1 border border-gray-300 text-gray-700 py-3 rounded-lg font-semibold hover:bg-gray-50">Back</button>
+                    <button type="button" class="flex-1 gradient-primary text-white py-3 rounded-lg font-semibold hover:shadow-lg transition" onclick="confirmBooking()">Confirm Booking</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        function goToStep(step) {
+            document.querySelectorAll('[id^="step"]').forEach(el => el.classList.add('hidden'));
+            document.getElementById(`step${step}`).classList.remove('hidden');
+        }
+
+        function confirmBooking() {
+            alert('Appointment booked successfully! Confirmation email sent to your inbox.');
+            window.location.href = 'index.html';
+        }
+    </script>
+</body>
+</html>

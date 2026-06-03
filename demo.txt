@@ -1,0 +1,778 @@
+# HOSPITAL APPOINTMENT BOOKING SYSTEM - DATABASE SCHEMA V1
+
+## USERS
+
+```sql
+users
+-----
+user_id BIGINT PRIMARY KEY 
+
+email VARCHAR(255) NOT NULL UNIQUE
+password_hash VARCHAR(255) NOT NULL
+
+role ENUM(
+    'PATIENT',
+    'DOCTOR',
+    'ADMIN'
+) NOT NULL
+
+is_active BOOLEAN DEFAULT TRUE
+
+google_sub VARCHAR(255) UNIQUE
+
+is_email_verified BOOLEAN DEFAULT FALSE
+
+last_login_at TIMESTAMP
+
+created_at TIMESTAMP NOT NULL
+updated_at TIMESTAMP NOT NULL
+```
+
+---
+
+## ADMINS
+
+```sql
+admins
+------
+admin_id BIGINT PRIMARY KEY
+
+user_id BIGINT UNIQUE NOT NULL
+hospital_id BIGINT  NOT NULL 
+first_name VARCHAR(255) NOT NULL
+last_name VARCHAR(255) NOT NULL
+
+created_at TIMESTAMP NOT NULL
+updated_at TIMESTAMP NOT NULL
+
+FOREIGN KEY (user_id)
+REFERENCES users(user_id)
+
+FOREIGN KEY (hospital_id)
+REFERENCES hospital(hospital_id)
+```
+
+---
+
+## PATIENTS
+
+```sql
+patients
+--------
+patient_id VARCHAR(20) PRIMARY KEY
+
+user_id BIGINT UNIQUE NOT NULL
+
+first_name VARCHAR(255) NOT NULL
+last_name VARCHAR(255) NOT NULL
+
+country_code VARCHAR(4) NOT NULL
+mobile VARCHAR(15) NOT NULL UNIQUE
+
+address_line1 VARCHAR(255)
+address_line2 VARCHAR(255)
+
+blood_group VARCHAR(5)
+
+profile_path VARCHAR(255)
+
+dob DATE NOT NULL
+
+gender ENUM(
+    'MALE',
+    'FEMALE',
+    'OTHER'
+) NOT NULL
+
+is_insured BOOLEAN DEFAULT FALSE
+
+created_at TIMESTAMP NOT NULL
+updated_at TIMESTAMP NOT NULL
+
+FOREIGN KEY (user_id)
+REFERENCES users(user_id)
+```
+
+---
+
+## PATIENT_INSURANCE_DETAILS
+
+```sql
+patient_insurance_details
+-------------------------
+insurance_id BIGINT PRIMARY KEY
+
+patient_id VARCHAR(20) NOT NULL
+
+policy_number VARCHAR(255) NOT NULL
+policy_company VARCHAR(255) NOT NULL
+
+policy_document_path VARCHAR(255)
+
+created_at TIMESTAMP NOT NULL
+updated_at TIMESTAMP NOT NULL
+
+FOREIGN KEY (patient_id)
+REFERENCES patients(patient_id)
+
+UNIQUE(policy_number, policy_company)
+```
+
+---
+
+## FAMILY_MEMBERS
+
+```sql
+family_members
+--------------
+member_id BIGINT PRIMARY KEY
+
+patient_id VARCHAR(20) NOT NULL
+
+relation VARCHAR(100) NOT NULL
+
+first_name VARCHAR(255) NOT NULL
+last_name VARCHAR(255) NOT NULL
+dob DATE
+mobile VARCHAR(15)
+email VARCHAR(255)
+
+created_at TIMESTAMP NOT NULL
+updated_at TIMESTAMP NOT NULL
+
+FOREIGN KEY (patient_id)
+REFERENCES patients(patient_id)
+```
+
+---
+
+## HOSPITALS
+
+```sql
+hospitals
+---------
+hospital_id BIGINT PRIMARY KEY
+hospital_name VARCHAR(255) NOT NULL
+
+email VARCHAR(255) NOT NULL
+address_line1 VARCHAR(255) NOT NULL
+address_line2 VARCHAR(255)
+
+contact_number VARCHAR(15) UNIQUE
+
+created_at TIMESTAMP NOT NULL
+updated_at TIMESTAMP NOT NULL
+```
+
+---
+
+## DOCTORS
+
+```sql
+doctors
+-------
+doctor_id BIGINT PRIMARY KEY
+
+user_id BIGINT UNIQUE NOT NULL
+
+hospital_id BIGINT NOT NULL
+
+first_name VARCHAR(255) NOT NULL
+last_name VARCHAR(255) NOT NULL
+
+joined_at DATE
+
+gender enum('male','female','others')
+
+experience_years INT
+
+consultation_fee DECIMAL(10,2)
+
+rating DECIMAL(2,1)
+
+bio TEXT
+
+profile_path VARCHAR(255)
+
+is_deactivated BOOLEAN DEFAULT FALSE
+
+created_at TIMESTAMP NOT NULL
+updated_at TIMESTAMP NOT NULL
+
+FOREIGN KEY (user_id)
+REFERENCES users(user_id)
+
+FOREIGN KEY (hospital_id)
+REFERENCES hospitals(hospital_id)
+```
+
+---
+
+## DOCTOR_SCHEDULES
+
+```sql
+doctor_schedules
+----------------
+schedule_id BIGINT PRIMARY KEY
+
+doctor_id BIGINT NOT NULL
+
+working_day ENUM(
+    'MONDAY',
+    'TUESDAY',
+    'WEDNESDAY',
+    'THURSDAY',
+    'FRIDAY',
+    'SATURDAY',
+    'SUNDAY'
+)
+
+working_from TIME NOT NULL
+working_to TIME NOT NULL
+slot_duration INT NOT NULL
+  
+
+created_at TIMESTAMP NOT NULL
+updated_at TIMESTAMP NOT NULL
+
+FOREIGN KEY (doctor_id)
+REFERENCES doctors(doctor_id)
+```
+
+## DOCTOR_STATUSD
+
+```jsx
+doctor_status_id  BIGINT PRIMARY KEY
+
+from DATE NOT NULL
+
+to DATE NOT NULL
+
+date DATE
+
+reason VARCHAR(255)
+status  enum(‘ on leave’ , ‘busy’,’available’)
+
+doctor_id fk doctor(doctor_id)
+```
+
+---
+
+## DOCTOR_LEAVES
+
+```sql
+doctor_leaves
+-------------
+leave_id BIGINT PRIMARY KEY
+
+doctor_id BIGINT NOT NULL
+
+from_date DATE NOT NULL
+to_date DATE NOT NULL
+
+reason VARCHAR(255)
+
+created_at TIMESTAMP NOT NULL
+
+FOREIGN KEY (doctor_id)
+REFERENCES doctors(doctor_id)
+```
+
+---
+
+## DOCTOR_QUALIFICATIONS
+
+```sql
+doctor_qualifications
+---------------------
+qualification_id BIGINT PRIMARY KEY
+
+doctor_id BIGINT NOT NULL
+
+degree VARCHAR(255) NOT NULL
+
+graduation_year INT
+
+college_name VARCHAR(255)
+
+created_at TIMESTAMP NOT NULL
+updated_at TIMESTAMP NOT NULL
+
+FOREIGN KEY (doctor_id)
+REFERENCES doctors(doctor_id)
+```
+
+---
+
+## SPECIALTIES
+
+```sql
+specialties
+-----------
+specialty_id BIGINT PRIMARY KEY
+
+specialty_name VARCHAR(255) NOT NULL UNIQUE
+```
+
+---
+
+## DOCTOR_SPECIALTIES
+
+```sql
+doctor_specialties
+------------------
+doctor_specialty_id BIGINT PRIMARY KEY
+
+doctor_id BIGINT NOT NULL
+specialty_id BIGINT NOT NULL
+
+FOREIGN KEY (doctor_id)
+REFERENCES doctors(doctor_id)
+
+FOREIGN KEY (specialty_id)
+REFERENCES specialties(specialty_id)
+
+UNIQUE(doctor_id, specialty_id)
+```
+
+---
+
+## APPOINTMENTS
+
+```sql
+appointments
+------------
+appointment_id BIGINT PRIMARY KEY
+
+doctor_id BIGINT NOT NULL
+patient_id VARCHAR(20) NOT NULL
+
+slot_date DATE NOT NULL
+start_time TIME NOT NULL
+end_time TIME NOT NULL
+slot_duration INT NOT NULL
+
+appointment_type ENUM(
+    'IN_PERSON',
+    'TELEMEDICINE'
+) NOT NULL
+
+appointment_status ENUM(
+'PAYMENT_PENDING',
+'CONFIRMED',
+'CHECKED_IN',
+'IN_PROGRESS',
+'COMPLETED',
+'CANCELLED',
+'RESCHEDULED',
+'NO_SHOW'
+) NOT NULL
+
+chief_complaint VARCHAR(500)
+
+confirmation_no VARCHAR(100) UNIQUE
+
+created_at TIMESTAMP NOT NULL
+updated_at TIMESTAMP NOT NULL
+
+FOREIGN KEY (doctor_id)
+REFERENCES doctors(doctor_id)
+
+FOREIGN KEY (patient_id)
+REFERENCES patients(patient_id)
+
+UNIQUE(
+    doctor_id,
+    slot_date,
+    slot_time
+)
+```
+
+---
+
+## APPOINTMENT_STATUS_HISTORY
+
+```sql
+appointment_status_history
+--------------------------
+history_id BIGINT PRIMARY KEY
+
+appointment_id BIGINT NOT NULL
+
+old_status VARCHAR(50)
+new_status VARCHAR(50) NOT NULL
+
+changed_by_user_id BIGINT
+
+remarks VARCHAR(255)
+
+created_at TIMESTAMP NOT NULL
+
+FOREIGN KEY (appointment_id)
+REFERENCES appointments(appointment_id)
+
+FOREIGN KEY (changed_by_user_id)
+REFERENCES users(user_id)
+```
+
+---
+
+## APPOINTMENT_DOCUMENTS
+
+```sql
+appointment_documents
+---------------------
+document_id BIGINT PRIMARY KEY
+
+appointment_id BIGINT NOT NULL
+
+document_name VARCHAR(255)
+
+document_path VARCHAR(255)
+
+uploaded_at TIMESTAMP
+
+FOREIGN KEY (appointment_id)
+REFERENCES appointments(appointment_id)
+```
+
+---
+
+## TELEMEDICINE_SESSIONS
+
+```sql
+telemedicine_sessions
+---------------------
+session_id BIGINT PRIMARY KEY
+
+appointment_id BIGINT UNIQUE NOT NULL
+
+meeting_link VARCHAR(500)
+
+status ENUM(
+'SCHEDULED',
+'STARTED',
+'COMPLETED',
+'CANCELLED'
+)
+
+started_at TIMESTAMP
+ended_at TIMESTAMP
+
+created_at TIMESTAMP NOT NULL
+
+FOREIGN KEY (appointment_id)
+REFERENCES appointments(appointment_id)
+```
+
+---
+
+## PAYMENTS
+
+```sql
+payments
+--------
+payment_id BIGINT PRIMARY KEY
+
+appointment_id BIGINT NOT NULL unique
+
+amount DECIMAL(10,2) NOT NULL
+
+currency VARCHAR(10) DEFAULT 'INR'
+
+payment_method ENUM(
+'UPI',
+'CARD',
+'NET_BANKING',
+'CASH'
+)
+
+transaction_id VARCHAR(255)
+
+status ENUM(
+    'PENDING',
+    'SUCCESS',
+    'FAILED',
+    'REFUNDED'
+)
+
+refund_status BOOLEAN DEFAULT FALSE
+
+transaction_at TIMESTAMP
+
+created_at TIMESTAMP NOT NULL
+
+FOREIGN KEY (appointment_id)
+REFERENCES appointments(appointment_id)
+```
+
+---
+
+## MEDICAL_RECORDS
+
+```sql
+medical_records
+---------------
+record_id BIGINT PRIMARY KEY
+
+appointment_id BIGINT UNIQUE NOT NULL
+
+doctor_id BIGINT NOT NULL
+patient_id VARCHAR(20) NOT NULL
+
+diagnosis VARCHAR(500)
+
+examination_notes TEXT NOT NULL
+
+created_at TIMESTAMP NOT NULL
+updated_at TIMESTAMP NOT NULL
+
+FOREIGN KEY (appointment_id)
+REFERENCES appointments(appointment_id)
+
+FOREIGN KEY (doctor_id)
+REFERENCES doctors(doctor_id)
+
+FOREIGN KEY (patient_id)
+REFERENCES patients(patient_id)
+```
+
+---
+
+## MEDICAL_RECORD_ATTACHMENTS
+
+```sql
+medical_record_attachments
+--------------------------
+attachment_id BIGINT PRIMARY KEY
+
+record_id BIGINT NOT NULL
+
+file_name VARCHAR(255)
+file_path VARCHAR(255)
+
+created_at TIMESTAMP NOT NULL
+
+FOREIGN KEY (record_id)
+REFERENCES medical_records(record_id)
+```
+
+---
+
+## MEDICAL_RECORD_AMENDMENTS
+
+```sql
+medical_record_amendments
+-------------------------
+amendment_id BIGINT PRIMARY KEY
+
+record_id BIGINT NOT NULL
+
+amended_by_doctor_id BIGINT NOT NULL
+
+field_name VARCHAR(100)
+
+old_value TEXT
+
+new_value TEXT NOT NULL
+
+reason VARCHAR(500) NOT NULL
+
+created_at TIMESTAMP NOT NULL
+
+FOREIGN KEY (record_id)
+REFERENCES medical_records(record_id)
+
+FOREIGN KEY (amended_by_doctor_id)
+REFERENCES doctors(doctor_id)
+```
+
+---
+
+## MEDICAL_RECORD_ACCESS
+
+```sql
+medical_record_access
+---------------------
+access_id BIGINT PRIMARY KEY
+
+record_id BIGINT NOT NULL
+
+doctor_id BIGINT NOT NULL
+	
+granted_by_patient_id VARCHAR(20) NOT NULL
+
+expires_at TIMESTAMP
+
+created_at TIMESTAMP NOT NULL
+
+FOREIGN KEY (record_id)
+REFERENCES medical_records(record_id)
+
+FOREIGN KEY (doctor_id)
+REFERENCES doctors(doctor_id)
+
+FOREIGN KEY (granted_by_patient_id)
+REFERENCES patients(patient_id)
+```
+
+---
+
+## PRESCRIPTIONS
+
+```sql
+prescriptions
+-------------
+prescription_id BIGINT PRIMARY KEY
+
+record_id BIGINT NOT NULL UNIQUE
+
+notes VARCHAR(1000)
+
+created_at TIMESTAMP NOT NULL
+updated_at TIMESTAMP NOT NULL
+
+FOREIGN KEY (record_id)
+REFERENCES medical_records(record_id)
+```
+
+---
+
+## PRESCRIPTION_ITEMS
+
+```jsx
+prescription_items
+------------------
+item_id BIGINT PRIMARY KEY
+
+prescription_id BIGINT NOT NULL
+
+medicine_name VARCHAR(255) NOT NULL
+
+dosage VARCHAR(100) NOT NULL
+
+frequency VARCHAR(100) NOT NULL
+
+duration VARCHAR(100) NOT NULL
+
+instructions VARCHAR(500)
+
+created_at TIMESTAMP NOT NULL
+updated_at TIMESTAMP NOT NULL
+
+FOREIGN KEY (prescription_id)
+REFERENCES prescriptions(prescription_id)
+```
+
+## NOTIFICATIONS
+
+```sql
+notifications
+-------------
+notification_id BIGINT PRIMARY KEY
+
+patient_id VARCHAR(20)
+
+doctor_id BIGINT
+
+notification_type VARCHAR(100)
+
+notification_message TEXT NOT NULL
+
+sent_at TIMESTAMP
+
+is_read BOOLEAN DEFAULT FALSE
+
+created_at TIMESTAMP NOT NULL
+
+FOREIGN KEY (patient_id)
+REFERENCES patients(patient_id)
+
+FOREIGN KEY (doctor_id)
+REFERENCES doctors(doctor_id)
+```
+
+---
+
+## OTP_VERIFICATIONS
+
+```sql
+otp_verifications
+-----------------
+otp_id BIGINT PRIMARY KEY
+
+user_id BIGINT NOT NULL
+
+otp_code VARCHAR(10) NOT NULL
+
+purpose ENUM(
+    'REGISTRATION',
+    'LOGIN',
+    'PASSWORD_RESET'
+)
+
+expires_at TIMESTAMP NOT NULL
+
+verified_at TIMESTAMP
+
+created_at TIMESTAMP NOT NULL
+
+FOREIGN KEY (user_id)
+REFERENCES users(user_id)
+```
+
+---
+
+## USER_SESSIONS
+
+```sql
+user_sessions
+-------------
+session_id BIGINT PRIMARY KEY
+
+user_id BIGINT NOT NULL
+
+refresh_token VARCHAR(500) NOT NULL
+
+device_info VARCHAR(255)
+
+auth_provider ENUM(
+'LOCAL',
+'GOOGLE'
+)
+
+ip_address VARCHAR(100)
+
+expires_at TIMESTAMP NOT NULL
+
+created_at TIMESTAMP NOT NULL
+
+FOREIGN KEY (user_id)
+REFERENCES users(user_id)
+```
+
+---
+
+## AUDIT_LOGS
+
+```sql
+audit_logs
+----------
+audit_id BIGINT PRIMARY KEY
+
+performed_by_user_id BIGINT fk user(user_id
+
+action VARCHAR(255) NOT NULL
+
+entity_name VARCHAR(100)
+
+entity_id VARCHAR(50)
+
+old_value TEXT
+
+new_value TEXT
+
+ip_address VARCHAR(50)
+
+created_at TIMESTAMP NOT NULL
+```
